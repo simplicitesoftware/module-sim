@@ -1,0 +1,9 @@
+{
+    "date": "Wed Dec 13 12:13:57 CET 2017",
+    "name": "SimpliciteInstanceManager",
+    "format": "xml",
+    "description": "Sandboxes manager",
+    "repository": {},
+    "version": "5.x",
+    "dependencies": [{"Simplicite": "4.0"}]
+}
