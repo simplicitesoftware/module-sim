@@ -1,0 +1,916 @@
+components:
+  securitySchemes:
+    basicAuth:
+      scheme: basic
+      type: http
+    bearerAuth:
+      bearerFormat: Simplicite token
+      scheme: bearer
+      type: http
+servers:
+- url: https://dev40.simplicite.cloud/api
+openapi: 3.0.0
+paths:
+  /rest/SIMInstance:
+    get:
+      security:
+      - bearerAuth: []
+      description: Get business object metadata or search records
+      operationId: obj-siminstance-search
+      responses:
+        '200':
+          description: Business object metadata or records of search result
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId
+        description: Search filter for Server
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvName
+        description: Search filter for Server Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvURL
+        description: Search filter for Server URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvUsername
+        description: Search filter for Server Username
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simInsSrvId__simSrvClientCertificate
+        description: Search filter for Server Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvPassword
+        description: Search filter for Server Password
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsName
+        description: Search filter for Instance
+        required: false
+      - schema:
+          type: string
+          enum:
+          - '3_0'
+          - '3_1'
+          - '3_2'
+          - '4_0'
+        in: query
+        name: simInsVersion
+        description: Search filter for Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsCreated
+        description: Search filter for Created date
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsUpdated
+        description: Search filter for Updated date
+        required: false
+      - schema:
+          type: string
+          enum:
+          - started
+          - stopped
+          - cancelled
+          - processing
+        in: query
+        name: simInsStatus
+        description: Search filter for Status
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsURL
+        description: Search filter for URL
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsProtected
+        description: Search filter for Protected?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsAutoSave
+        description: Search filter for Auto save?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsAutoUpdate
+        description: Search filter for Auto update?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsOwner
+        description: Search filter for Owner identifier
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsEmail
+        description: Search filter for Email
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsFirstname
+        description: Search filter for First name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsLastname
+        description: Search filter for Last name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsPhone
+        description: Search filter for Phone
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsCompany
+        description: Search filter for Company
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsDescription
+        description: Search filter for Description
+        required: false
+      tags:
+      - SIMInstance
+  /login:
+    get:
+      security:
+      - basicAuth: []
+      description: Login
+      operationId: login
+      responses:
+        '200':
+          description: User token
+          content:
+            application/json: {}
+            text/plain: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - json
+          - oauth2
+        in: query
+        name: _output
+        description: Optional output format
+        required: false
+      tags:
+      - Application
+  /logout:
+    get:
+      security:
+      - bearerAuth: []
+      description: Logout
+      operationId: logout
+      responses:
+        '200':
+          description: Logout confirmation
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      tags:
+      - Application
+  /rest:
+    get:
+      security:
+      - bearerAuth: []
+      description: Application session information
+      operationId: info
+      responses:
+        '200':
+          description: Application information
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+            text/plain: {}
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: texts
+        description: Texts?
+        required: false
+      tags:
+      - Application
+  /rest/SIMInstance/{row_id}:
+    post:
+      security:
+      - bearerAuth: []
+      description: Create business object record
+      operationId: obj-siminstance-create
+      responses:
+        '200':
+          description: Created business object record
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId
+        description: Server
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvName
+        description: Server Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvURL
+        description: Server URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvUsername
+        description: Server Username
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simInsSrvId__simSrvClientCertificate
+        description: Server Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvPassword
+        description: Server Password
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsName
+        description: Instance
+        required: false
+      - schema:
+          type: string
+          enum:
+          - '3_0'
+          - '3_1'
+          - '3_2'
+          - '4_0'
+        in: query
+        name: simInsVersion
+        description: Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsCreated
+        description: Created date
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsUpdated
+        description: Updated date
+        required: false
+      - schema:
+          type: string
+          enum:
+          - started
+          - stopped
+          - cancelled
+          - processing
+        in: query
+        name: simInsStatus
+        description: Status
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsURL
+        description: URL
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsProtected
+        description: Protected?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsAutoSave
+        description: Auto save?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsAutoUpdate
+        description: Auto update?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsOwner
+        description: Owner identifier
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsEmail
+        description: Email
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsFirstname
+        description: First name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsLastname
+        description: Last name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsPhone
+        description: Phone
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsCompany
+        description: Company
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsDescription
+        description: Description
+        required: false
+      tags:
+      - SIMInstance
+    get:
+      security:
+      - bearerAuth: []
+      description: Get business object record
+      operationId: obj-siminstance-get
+      responses:
+        '200':
+          description: Business object record
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - SIMInstance
+    delete:
+      security:
+      - bearerAuth: []
+      description: Delete business object record
+      operationId: obj-siminstance-delete
+      responses:
+        '200':
+          description: Business object deletion confirmation
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      tags:
+      - SIMInstance
+    put:
+      security:
+      - bearerAuth: []
+      description: Update business object record
+      operationId: obj-siminstance-update
+      responses:
+        '200':
+          description: Updated business object record
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId
+        description: Server
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvName
+        description: Server Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvURL
+        description: Server URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvUsername
+        description: Server Username
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simInsSrvId__simSrvClientCertificate
+        description: Server Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsSrvId__simSrvPassword
+        description: Server Password
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsName
+        description: Instance
+        required: false
+      - schema:
+          type: string
+          enum:
+          - '3_0'
+          - '3_1'
+          - '3_2'
+          - '4_0'
+        in: query
+        name: simInsVersion
+        description: Version
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsCreated
+        description: Created date
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsUpdated
+        description: Updated date
+        required: false
+      - schema:
+          type: string
+          enum:
+          - started
+          - stopped
+          - cancelled
+          - processing
+        in: query
+        name: simInsStatus
+        description: Status
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsURL
+        description: URL
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsProtected
+        description: Protected?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsAutoSave
+        description: Auto save?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: simInsAutoUpdate
+        description: Auto update?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsOwner
+        description: Owner identifier
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsEmail
+        description: Email
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsFirstname
+        description: First name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsLastname
+        description: Last name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsPhone
+        description: Phone
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsCompany
+        description: Company
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simInsDescription
+        description: Description
+        required: false
+      tags:
+      - SIMInstance
+  /rest/SIMServer/{row_id}:
+    post:
+      security:
+      - bearerAuth: []
+      description: Create business object record
+      operationId: obj-simserver-create
+      responses:
+        '200':
+          description: Created business object record
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: simSrvName
+        description: Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvURL
+        description: URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvSettings
+        description: Additional settings
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvUsername
+        description: Username
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvPassword
+        description: Password
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simSrvClientCertificate
+        description: Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvDescription
+        description: Description
+        required: false
+      tags:
+      - SIMServer
+    get:
+      security:
+      - bearerAuth: []
+      description: Get business object record
+      operationId: obj-simserver-get
+      responses:
+        '200':
+          description: Business object record
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - SIMServer
+    delete:
+      security:
+      - bearerAuth: []
+      description: Delete business object record
+      operationId: obj-simserver-delete
+      responses:
+        '200':
+          description: Business object deletion confirmation
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      tags:
+      - SIMServer
+    put:
+      security:
+      - bearerAuth: []
+      description: Update business object record
+      operationId: obj-simserver-update
+      responses:
+        '200':
+          description: Updated business object record
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: simSrvName
+        description: Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvURL
+        description: URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvSettings
+        description: Additional settings
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvUsername
+        description: Username
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvPassword
+        description: Password
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simSrvClientCertificate
+        description: Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvDescription
+        description: Description
+        required: false
+      tags:
+      - SIMServer
+  /rest/SIMServer:
+    get:
+      security:
+      - bearerAuth: []
+      description: Get business object metadata or search records
+      operationId: obj-simserver-search
+      responses:
+        '200':
+          description: Business object metadata or records of search result
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: _metadata
+        description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _doc
+        description: Documentation?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvName
+        description: Search filter for Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvURL
+        description: Search filter for URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvSettings
+        description: Search filter for Additional settings
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvUsername
+        description: Search filter for Username
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvPassword
+        description: Search filter for Password
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simSrvClientCertificate
+        description: Search filter for Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvDescription
+        description: Search filter for Description
+        required: false
+      tags:
+      - SIMServer
+info:
+  license:
+    name: Simplicite license
+    url: http://www.simplicitesoftware.com
+  contact:
+    name: Simplicite Software
+    url: http://www.simplicitesoftware.com
+    email: contact@simplicitesoftware.com
+  description: REST APIs for SimpliciteInstanceManager
+  title: SimpliciteInstanceManager
+  version: 5.x

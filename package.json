@@ -1,8 +1,8 @@
 {
-    "date": "Wed Dec 13 12:13:57 CET 2017",
+    "date": "Tue Feb 13 21:14:53 CET 2018",
     "name": "SimpliciteInstanceManager",
     "format": "xml",
-    "description": "Sandboxes manager",
+    "description": "Simplicite Instances Manager (SIM)",
     "repository": {},
     "version": "5.x",
     "dependencies": [{"Simplicite": "4.0"}]

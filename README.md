@@ -4,7 +4,7 @@
 `SimpliciteInstanceManager` module definition
 =============================================
 
-Sandboxes manager
+Simplicite Instances Manager (SIM)
 
 `SIMInstance` business object definition
 ----------------------------------------
