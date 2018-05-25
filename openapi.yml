@@ -8,7 +8,7 @@ components:
       scheme: bearer
       type: http
 servers:
-- url: https://dev40.simplicite.cloud/api
+- url: https://dev40.dev.simplicite.io/api
 openapi: 3.0.0
 paths:
   /rest/SIMInstance:
