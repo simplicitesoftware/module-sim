@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<simplicite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.simplicite.fr/base" xsi:schemaLocation="http://www.simplicite.fr/base http://www.simplicite.fr/schemas/base.xsd">
+<simplicite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.simplicite.fr/base" xsi:schemaLocation="http://www.simplicite.fr/base https://www.simplicite.io/resources/schemas/base.xsd">
 <object>
 	<name>Module</name>
 	<action>upsert</action>
@@ -2418,9 +2418,9 @@
 		<obf_associate>0</obf_associate>
 		<obf_field_id.fld_dbname>ins_srv_id</obf_field_id.fld_dbname>
 		<obf_inline>0</obf_inline>
-		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<obf_area_id.ofa_name>SndSandbox-1</obf_area_id.ofa_name>
 		<obf_area_id.ofa_position>1</obf_area_id.ofa_position>
+		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 </object>
 <object>
@@ -2436,6 +2436,7 @@
 		<act_url/>
 		<act_image>load</act_image>
 		<act_confirm>0</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
@@ -2452,6 +2453,7 @@
 		<act_url/>
 		<act_image>info</act_image>
 		<act_confirm>0</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
@@ -2468,6 +2470,7 @@
 		<act_url/>
 		<act_image>document</act_image>
 		<act_confirm>0</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
@@ -2484,6 +2487,7 @@
 		<act_url/>
 		<act_image>key</act_image>
 		<act_confirm>0</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
@@ -2500,6 +2504,7 @@
 		<act_url/>
 		<act_image>begin</act_image>
 		<act_confirm>0</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
@@ -2516,6 +2521,7 @@
 		<act_url/>
 		<act_image>end</act_image>
 		<act_confirm>0</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
@@ -2532,6 +2538,7 @@
 		<act_url/>
 		<act_image>star</act_image>
 		<act_confirm>1</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
@@ -2548,6 +2555,7 @@
 		<act_url/>
 		<act_image>load</act_image>
 		<act_confirm>0</act_confirm>
+		<act_confirm_expr/>
 		<act_confirm_ui/>
 		<act_plus>0</act_plus>
 		<act_comment/>
