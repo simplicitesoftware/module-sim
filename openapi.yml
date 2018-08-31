@@ -1,4 +1,122 @@
 components:
+  schemas:
+    SIMInstance:
+      type: object
+      properties:
+        simInsAutoUpdate:
+          description: Auto update?
+          type: boolean
+        simInsPhone:
+          description: Phone
+          type: string
+        simInsAutoSave:
+          description: Auto save?
+          type: boolean
+        simInsSrvId__simSrvUsername:
+          description: Server Username
+          type: string
+        simInsDescription:
+          description: Description
+          type: string
+        simInsSrvId__simSrvPassword:
+          description: Server Password
+          type: string
+        simInsName:
+          description: Instance
+          type: string
+        simInsVersion:
+          description: Version
+          type: string
+          enum:
+          - '3_0'
+          - '3_1'
+          - '3_2'
+          - '4_0'
+        simInsSrvId__simSrvClientCertificate:
+          description: Server Client certificate
+          type: object
+        simInsSrvId__simSrvName:
+          description: Server Name
+          type: string
+        simInsOwner:
+          description: Owner identifier
+          type: string
+        simInsFirstname:
+          description: First name
+          type: string
+        simInsStatus:
+          description: Status
+          type: string
+          enum:
+          - started
+          - stopped
+          - cancelled
+          - processing
+        simInsURL:
+          description: URL
+          type: string
+        simInsCreated:
+          description: Created date
+          type: string
+        simInsSrvId__simSrvURL:
+          description: Server URL
+          type: string
+        simInsLastname:
+          description: Last name
+          type: string
+        simInsEmail:
+          description: Email
+          type: string
+        row_id:
+          description: ID
+          type: string
+        simInsUpdated:
+          description: Updated date
+          type: string
+        simInsSrvId:
+          description: Server
+          type: string
+        simInsProtected:
+          description: Protected?
+          type: boolean
+        simInsCompany:
+          description: Company
+          type: string
+    SIMServer:
+      type: object
+      properties:
+        simSrvSettings:
+          description: Additional settings
+          type: string
+        simSrvClientCertificate:
+          description: Client certificate
+          type: object
+        simSrvPassword:
+          description: Password
+          type: string
+        simSrvUsername:
+          description: Username
+          type: string
+        simSrvName:
+          description: Name
+          type: string
+        row_id:
+          description: ID
+          type: string
+        simSrvDescription:
+          description: Description
+          type: string
+        simSrvURL:
+          description: URL
+          type: string
+    ArrayOfSIMServer:
+      type: array
+      items:
+        $ref: '#/components/schemas/SIMServer'
+    ArrayOfSIMInstance:
+      type: array
+      items:
+        $ref: '#/components/schemas/SIMInstance'
   securitySchemes:
     basicAuth:
       scheme: basic
@@ -21,7 +139,9 @@ paths:
         '200':
           description: Business object metadata or records of search result
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfSIMInstance'
         '401':
           description: Authentication error
           content:
@@ -263,7 +383,9 @@ paths:
         '200':
           description: Created business object record
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMInstance'
         '401':
           description: Authentication error
           content:
@@ -427,6 +549,10 @@ paths:
       responses:
         '200':
           description: Business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMInstance'
       parameters:
       - schema:
           type: string
@@ -462,8 +588,6 @@ paths:
       responses:
         '200':
           description: Business object deletion confirmation
-          content:
-            application/json: {}
         '401':
           description: Authentication error
           content:
@@ -486,7 +610,9 @@ paths:
         '200':
           description: Updated business object record
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMInstance'
         '401':
           description: Authentication error
           content:
@@ -652,7 +778,9 @@ paths:
         '200':
           description: Created business object record
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMServer'
         '401':
           description: Authentication error
           content:
@@ -716,6 +844,10 @@ paths:
       responses:
         '200':
           description: Business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMServer'
       parameters:
       - schema:
           type: string
@@ -751,8 +883,6 @@ paths:
       responses:
         '200':
           description: Business object deletion confirmation
-          content:
-            application/json: {}
         '401':
           description: Authentication error
           content:
@@ -775,7 +905,9 @@ paths:
         '200':
           description: Updated business object record
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMServer'
         '401':
           description: Authentication error
           content:
@@ -841,7 +973,9 @@ paths:
         '200':
           description: Business object metadata or records of search result
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfSIMServer'
         '401':
           description: Authentication error
           content:

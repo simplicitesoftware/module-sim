@@ -13,30 +13,30 @@ Sandbox
 
 ### Fields
 
-| Name                                                         | Type                                     | Req | Upd | Description                                                                      | 
-| ------------------------------------------------------------ | ---------------------------------------- | --- | --- | -------------------------------------------------------------------------------- |
-| `simInsSrvId` link to **`SIMServer`**                        | id                                       | x*  | x   | -                                                                                |
-| _Ref. `simInsSrvId.simSrvName`_                              | _regexp(50)_                             |     |     | _Server name_                                                                    |
-| _Ref. `simInsSrvId.simSrvURL`_                               | _url(100)_                               |     |     | -                                                                                |
-| _Ref. `simInsSrvId.simSrvUsername`_                          | _char(50)_                               |     |     | _Server user name_                                                               |
-| _Ref. `simInsSrvId.simSrvClientCertificate`_                 | _document_                               |     |     | _Client certificate allowed by server_                                           |
-| _Ref. `simInsSrvId.simSrvPassword`_                          | _password(50)_                           |     |     | _Server password_                                                                |
-| `simInsName`                                                 | char(20)                                 | *   | x   | -                                                                                |
-| `simInsVersion`                                              | enum(7) using `SND_VERSION` list         | x   | x   | Sandbox version                                                                  |
-| `simInsCreated`                                              | date                                     |     |     | Sandbox creation date                                                            |
-| `simInsUpdated`                                              | datetime                                 |     |     | Updated date time                                                                |
-| `simInsStatus`                                               | enum(7) using `SND_SND_STATUS` list      |     |     | Status                                                                           |
-| `simInsURL`                                                  | url(100)                                 |     |     | Custom URL                                                                       |
-| `simInsProtected`                                            | boolean                                  |     |     | Protected?                                                                       |
-| `simInsAutoSave`                                             | boolean                                  |     |     | Auto save?                                                                       |
-| `simInsAutoUpdate`                                           | boolean                                  |     |     | Auto update?                                                                     |
-| `simInsOwner`                                                | char(100)                                |     |     | Owner identifier                                                                 |
-| `simInsEmail`                                                | email(100)                               |     |     | Request email                                                                    |
-| `simInsFirstname`                                            | char(100)                                |     |     | First name                                                                       |
-| `simInsLastname`                                             | char(100)                                |     |     | Last name                                                                        |
-| `simInsPhone`                                                | phone(50)                                |     |     | Phone number                                                                     |
-| `simInsCompany`                                              | char(100)                                |     |     | Company name                                                                     |
-| `simInsDescription`                                          | html(4000)                               |     | x   | Sandbox description                                                              |
+| Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      | 
+| ------------------------------------------------------------ | ---------------------------------------- | -------- | --------- | -------- | -------------------------------------------------------------------------------- |
+| `simInsSrvId` link to **`SIMServer`**                        | id                                       | yes*     | yes       |          | -                                                                                |
+| _Ref. `simInsSrvId.simSrvName`_                              | _regexp(50)_                             |          |           |          | _Server name_                                                                    |
+| _Ref. `simInsSrvId.simSrvURL`_                               | _url(100)_                               |          |           | yes      | -                                                                                |
+| _Ref. `simInsSrvId.simSrvUsername`_                          | _char(50)_                               |          |           | yes      | _Server user name_                                                               |
+| _Ref. `simInsSrvId.simSrvClientCertificate`_                 | _document_                               |          |           | yes      | _Client certificate allowed by server_                                           |
+| _Ref. `simInsSrvId.simSrvPassword`_                          | _password(50)_                           |          |           | yes      | _Server password_                                                                |
+| `simInsName`                                                 | char(20)                                 | *        | yes       | yes      | -                                                                                |
+| `simInsVersion`                                              | enum(7) using `SND_VERSION` list         | yes      | yes       |          | Sandbox version                                                                  |
+| `simInsCreated`                                              | date                                     |          |           |          | Sandbox creation date                                                            |
+| `simInsUpdated`                                              | datetime                                 |          |           |          | Updated date time                                                                |
+| `simInsStatus`                                               | enum(7) using `SND_SND_STATUS` list      |          |           |          | Status                                                                           |
+| `simInsURL`                                                  | url(100)                                 |          |           |          | Custom URL                                                                       |
+| `simInsProtected`                                            | boolean                                  |          |           |          | Protected?                                                                       |
+| `simInsAutoSave`                                             | boolean                                  |          |           |          | Auto save?                                                                       |
+| `simInsAutoUpdate`                                           | boolean                                  |          |           |          | Auto update?                                                                     |
+| `simInsOwner`                                                | char(100)                                |          |           |          | Owner identifier                                                                 |
+| `simInsEmail`                                                | email(100)                               |          |           | yes      | Request email                                                                    |
+| `simInsFirstname`                                            | char(100)                                |          |           | yes      | First name                                                                       |
+| `simInsLastname`                                             | char(100)                                |          |           | yes      | Last name                                                                        |
+| `simInsPhone`                                                | phone(50)                                |          |           | yes      | Phone number                                                                     |
+| `simInsCompany`                                              | char(100)                                |          |           | yes      | Company name                                                                     |
+| `simInsDescription`                                          | html(4000)                               |          | yes       |          | Sandbox description                                                              |
 
 ### Lists
 
@@ -68,15 +68,15 @@ Sandbox server
 
 ### Fields
 
-| Name                                                         | Type                                     | Req | Upd | Description                                                                      | 
-| ------------------------------------------------------------ | ---------------------------------------- | --- | --- | -------------------------------------------------------------------------------- |
-| `simSrvName`                                                 | regexp(50)                               | x*  | x   | Server name                                                                      |
-| `simSrvURL`                                                  | url(100)                                 | x   | x   | -                                                                                |
-| `simSrvSettings`                                             | text(4000)                               |     | x   | Bluemix parameters                                                               |
-| `simSrvUsername`                                             | char(50)                                 |     | x   | Server user name                                                                 |
-| `simSrvPassword`                                             | password(50)                             |     | x   | Server password                                                                  |
-| `simSrvClientCertificate`                                    | document                                 |     | x   | Client certificate allowed by server                                             |
-| `simSrvDescription`                                          | html(4000)                               |     | x   | Server description                                                               |
+| Name                                                         | Type                                     | Required | Updatable | Personal | Description                                                                      | 
+| ------------------------------------------------------------ | ---------------------------------------- | -------- | --------- | -------- | -------------------------------------------------------------------------------- |
+| `simSrvName`                                                 | regexp(50)                               | yes*     | yes       |          | Server name                                                                      |
+| `simSrvURL`                                                  | url(100)                                 | yes      | yes       | yes      | -                                                                                |
+| `simSrvSettings`                                             | text(4000)                               |          | yes       | yes      | Bluemix parameters                                                               |
+| `simSrvUsername`                                             | char(50)                                 |          | yes       | yes      | Server user name                                                                 |
+| `simSrvPassword`                                             | password(50)                             |          | yes       | yes      | Server password                                                                  |
+| `simSrvClientCertificate`                                    | document                                 |          | yes       | yes      | Client certificate allowed by server                                             |
+| `simSrvDescription`                                          | html(4000)                               |          | yes       |          | Server description                                                               |
 
 ### Custom actions
 

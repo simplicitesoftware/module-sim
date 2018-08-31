@@ -309,6 +309,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Auto save?]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -342,6 +343,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Auto update?]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -375,6 +377,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Company name]]></fld_comment>
+		<fld_classification>PERSONAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -408,6 +411,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Sandbox creation date]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -441,6 +445,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Sandbox description]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -474,6 +479,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Request email]]></fld_comment>
+		<fld_classification>PERSONAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -507,6 +513,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[First name]]></fld_comment>
+		<fld_classification>PERSONAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -540,6 +547,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Last name]]></fld_comment>
+		<fld_classification>PERSONAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -573,6 +581,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment/>
+		<fld_classification>CONFIDENTIAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -606,6 +615,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Owner identifier]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -639,6 +649,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Phone number]]></fld_comment>
+		<fld_classification>PERSONAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -672,6 +683,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Protected?]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -705,6 +717,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment/>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -738,6 +751,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Status]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -771,6 +785,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Updated date time]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -804,6 +819,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Custom URL]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -837,6 +853,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Sandbox version]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -870,6 +887,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Client certificate allowed by server]]></fld_comment>
+		<fld_classification>CONFIDENTIAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -903,6 +921,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Server description]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -936,6 +955,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Server name]]></fld_comment>
+		<fld_classification/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -969,6 +989,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Server password]]></fld_comment>
+		<fld_classification>CONFIDENTIAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -1002,6 +1023,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Bluemix parameters]]></fld_comment>
+		<fld_classification>CONFIDENTIAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -1035,6 +1057,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment/>
+		<fld_classification>CONFIDENTIAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 	<data>
@@ -1068,6 +1091,7 @@
 		<fld_calc/>
 		<fld_objlist/>
 		<fld_comment><![CDATA[Server user name]]></fld_comment>
+		<fld_classification>CONFIDENTIAL</fld_classification>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 	</data>
 </object>
@@ -1263,6 +1287,8 @@
 		<obo_btn_save>1</obo_btn_save>
 		<obo_btn_saveclose>1</obo_btn_saveclose>
 		<obo_btn_close>1</obo_btn_close>
+		<obo_tray>1</obo_tray>
+		<obo_dashboard>1</obo_dashboard>
 	</data>
 	<data>
 		<obo_name>SIMServer</obo_name>
@@ -1318,6 +1344,8 @@
 		<obo_btn_save>1</obo_btn_save>
 		<obo_btn_saveclose>1</obo_btn_saveclose>
 		<obo_btn_close>1</obo_btn_close>
+		<obo_tray>1</obo_tray>
+		<obo_dashboard>1</obo_dashboard>
 	</data>
 </object>
 <object>
@@ -2406,17 +2434,17 @@
 		<obf_ref_order>1</obf_ref_order>
 		<obf_object_id.obj_name>SIMInstance</obf_object_id.obj_name>
 		<obf_field_id.fld_name>simInsSrvId</obf_field_id.fld_name>
+		<obf_field_id.fld_dbname>ins_srv_id</obf_field_id.fld_dbname>
 		<obf_field_id.fld_updatable>1</obf_field_id.fld_updatable>
 		<obf_field_id.fld_required>1</obf_field_id.fld_required>
 		<obf_field_id.fld_fonctid>1</obf_field_id.fld_fonctid>
 		<obf_cascad>R</obf_cascad>
 		<obf_card>0,n</obf_card>
+		<obf_query/>
 		<obf_visible>1</obf_visible>
 		<obf_ref_export>1</obf_ref_export>
 		<obf_copy>0</obf_copy>
-		<obf_query/>
 		<obf_associate>0</obf_associate>
-		<obf_field_id.fld_dbname>ins_srv_id</obf_field_id.fld_dbname>
 		<obf_inline>0</obf_inline>
 		<obf_area_id.ofa_name>SndSandbox-1</obf_area_id.ofa_name>
 		<obf_area_id.ofa_position>1</obf_area_id.ofa_position>
@@ -2442,6 +2470,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 	<data>
 		<act_name>sim02Health</act_name>
@@ -2459,6 +2488,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 	<data>
 		<act_name>sim03Logs</act_name>
@@ -2476,6 +2506,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 	<data>
 		<act_name>sim04IOCredentials</act_name>
@@ -2493,6 +2524,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 	<data>
 		<act_name>sim10Start</act_name>
@@ -2510,6 +2542,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 	<data>
 		<act_name>sim11Stop</act_name>
@@ -2527,6 +2560,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 	<data>
 		<act_name>sim20Upgrade</act_name>
@@ -2544,6 +2578,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 	<data>
 		<act_name>simRefreshAll</act_name>
@@ -2561,6 +2596,7 @@
 		<act_comment/>
 		<row_module_id.mdl_name>SimpliciteInstanceManager</row_module_id.mdl_name>
 		<act_exec>BCK</act_exec>
+		<act_count/>
 	</data>
 </object>
 <object>
