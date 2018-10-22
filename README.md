@@ -6,8 +6,6 @@
 
 Simplicite Instances Manager (SIM)
 
-Sonarqube analysis: `sonar-scanner -Dsonar.exclusions="**.min.js,**.min.css`
-
 `SIMInstance` business object definition
 ----------------------------------------
 

@@ -7,10 +7,8 @@
 		<mdl_name>SimpliciteInstancesManager</mdl_name>
 		<mdl_version>4.0</mdl_version>
 		<mdl_url><![CDATA[https://www.simplicite.io/resources/modules/sim-app-4.0.xml]]></mdl_url>
-		<mdl_lastupd>2018-10-22 15:05:35</mdl_lastupd>
-		<mdl_comment><![CDATA[Simplicite Instances Manager (SIM)
-
-Sonarqube analysis: `sonar-scanner -Dsonar.exclusions="**.min.js,**.min.css`]]></mdl_comment>
+		<mdl_lastupd>2018-10-22 23:37:22</mdl_lastupd>
+		<mdl_comment><![CDATA[Simplicite Instances Manager (SIM)]]></mdl_comment>
 	</data>
 </object>
 <object>
