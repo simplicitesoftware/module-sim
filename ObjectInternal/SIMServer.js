@@ -1,5 +1,3 @@
-importPackage(Packages.org.json);
-
 SIMServer.initCreate = function() {
 	this.getField("simSrvUsername").setVisibility(ObjectField.VIS_FORM);
 	this.getField("simSrvClientCertificate").setVisibility(ObjectField.VIS_FORM);
@@ -49,8 +47,9 @@ SIMServer._simRefreshAll = function() {
 				ins.setFieldValue("simInsSrvId", this.getRowId());
 				ins.setFieldValue("simInsName", name);
 				ins.setFieldValue("simInsDescription", "Source = " + row.getString("source"));
-			} else
+			} else {
 				ins.select(id);
+			}
 			ins.setFieldValue("simInsOwner", row.optString("owner_email", ""));
 			ins.setFieldValue("simInsCreated", row.getString("created"));
 			ins.setFieldValue("simInsUpdated", row.optString("updated", ""));
@@ -94,15 +93,16 @@ SIMServer._simRefreshAll = function() {
 // Action
 SIMServer.simRefreshAll = function() {
 	var ids = this.getSelectedIds();
+	var i;
 	if (Tool.isEmpty(ids)) {
 		this.resetFilters();
 		var rows = this.search();
-		for (var i = 0; i < rows.size(); i++) {
+		for (i = 0; i < rows.size(); i++) {
 			this.setValues(rows.get(i));
 			SIMServer._simRefreshAll.call(this);
 		}
 	} else {
-		for (var i = 0; i < ids.size(); i++) {
+		for (i = 0; i < ids.size(); i++) {
 			this.select(ids.get(i));
 			SIMServer._simRefreshAll.call(this);
 		}

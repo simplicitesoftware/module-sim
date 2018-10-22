@@ -1,5 +1,3 @@
-importPackage(Packages.org.json);
-
 SIMInstance.initCreate = function() {
 	this.getField("simInsSrvId").setUpdatable(true);
 	this.getField("simInsName").setUpdatable(true);
@@ -58,11 +56,12 @@ SIMInstance.preCreate = function() {
 		console.log("Add status = " + status);
 		var msg = res.optString("message", "No message");
 		if (status == 0) {
-			var r = SIMInstance.getSandbox.call(this);
+			var r = SIMInstance.simGet.call(this);
 			if (r.status != 0)
 				return SIMInstance._error.call(this, r.status, r.message);
-		} else
+		} else {
 			return SIMInstance._error.call(this, status, msg);
+		}
 	}
 };
 
@@ -90,7 +89,7 @@ SIMInstance.isActionEnable = function(row, action) {
 	return true;
 };
 
-SIMInstance.getSandbox = function() {
+SIMInstance.simGet = function() {
 	var res = SIMInstance.callAPI.call(this, "get");
 	var status = res.optInt("status", 999);
 	var msg = res.optString("message", "");
@@ -111,15 +110,16 @@ SIMInstance.getSandbox = function() {
 			this.setFieldValue("simInsLastname", item.optString("lastname", ""));
 			this.setFieldValue("simInsPhone", item.optString("phone", ""));
 			this.setFieldValue("simInsCompany", item.optString("company", ""));
-		} else
+		} else {
 			message = "No item in get response\n\n" + msg;
+		}
 	}
 	return { status: status, message: msg };
 }
 
-SIMInstance.refreshSandbox = function() {
+SIMInstance.simRefresh = function() {
 	try {
-		var r = SIMInstance.getSandbox.call(this);
+		var r = SIMInstance.simGet.call(this);
 		console.log("Refresh status = " + r.status);
 		if (r.status == 0) {
 			new BusinessObjectTool(this).validateAndSave();
@@ -131,55 +131,58 @@ SIMInstance.refreshSandbox = function() {
 	}
 };
 
-SIMInstance.upgradeSandbox = function() {
+SIMInstance.simUpgrade = function() {
 	var res = SIMInstance.callAPI.call(this, "upgrade", this.getFieldValue("simInsVersion").replace("_", "."));
 	var status = res.optInt("status", 999);
 	console.log("Upgrade status = " + status);
 	var msg = res.optString("message", "No message");
 	if (status == 0) {
-		var r = SIMInstance.getSandbox.call(this);
+		var r = SIMInstance.simGet.call(this);
 		console.log("Post ugrade get status = " + r.status);
 		if (r.status != 0)
 			return SIMInstance._error.call(this, r.status, r.message);
 		this.save();
 		return SIMInstance._info.call(this, msg);
-	} else
+	} else {
 		return SIMInstance._error.call(this, status, msg);
+	}
 };
 
-SIMInstance.startSandbox = function() {
+SIMInstance.simStart = function() {
 	var res = SIMInstance.callAPI.call(this, "start");
 	var status = res.optInt("status", 999);
 	console.log("Start status = " + status);
 	var msg = res.optString("message", "No message");
 	if (status == 0) {
-		var r = SIMInstance.getSandbox.call(this);
+		var r = SIMInstance.simGet.call(this);
 		console.log("Post start get status = " + r.status);
 		if (r.status != 0)
 			return SIMInstance._error.call(this, r.status, r.message);
 		this.save();
 		return SIMInstance._info.call(this, msg);
-	} else
+	} else {
 		return SIMInstance._error.call(this, status, msg);
+	}
 };
 
-SIMInstance.stopSandbox = function() {
+SIMInstance.simStop = function() {
 	var res = SIMInstance.callAPI.call(this, "stop");
 	var status = res.optInt("status", 999);
 	console.log("Stop status = " + status);
 	var msg = res.optString("message", "No message");
 	if (status == 0) {
-		var r = SIMInstance.getSandbox.call(this);
+		var r = SIMInstance.simGet.call(this);
 		console.log("Post stop get status = " + r.status);
 		if (r.status != 0)
 			return SIMInstance._error.call(this, r.status, r.message);
 		this.save();
 		return SIMInstance._info.call(this, msg);
-	} else
+	} else {
 		return SIMInstance._error.call(this, status, msg);
+	}
 };
 
-SIMInstance.healthSandbox = function() {
+SIMInstance.simHealth = function() {
 	var res = SIMInstance.callAPI.call(this, "health");
 	var status = res.optInt("status", 999);
 	console.log("Check status = " + status);
@@ -189,7 +192,7 @@ SIMInstance.healthSandbox = function() {
 	return SIMInstance._text.call(this, new JSONObject(msg).toString(4));
 };
 
-SIMInstance.sandboxLogs = function() {
+SIMInstance.simLogs = function() {
 	var res = SIMInstance.callAPI.call(this, "logs");
 	var status = res.optInt("status", 999);
 	console.log("Get logs status = " + status);
@@ -199,7 +202,7 @@ SIMInstance.sandboxLogs = function() {
 	return SIMInstance._text.call(this, msg);
 };
 
-SIMInstance.sandboxIOCredentials = function() {
+SIMInstance.simIOCredentials = function() {
 	var res = SIMInstance.callAPI.call(this, "iocredentials");
 	var status = res.optInt("status", 999);
 	console.log("Get I/O credentials status = " + status);
@@ -211,7 +214,7 @@ SIMInstance.sandboxIOCredentials = function() {
 	return SIMInstance._text.call(this, msg);
 };
 
-SIMInstance.sandboxHistory = function() {
+SIMInstance.simHistory = function() {
 	var res = SIMInstance.callAPI.call(this, "history");
 	var status = res.optInt("status", 999);
 	console.log("History status = " + status);
