@@ -1,9 +1,12 @@
 {
-    "date": "Tue Feb 13 21:14:53 CET 2018",
-    "name": "SimpliciteInstanceManager",
+    "date": "Mon Oct 22 15:05:35 CEST 2018",
+    "name": "SimpliciteInstancesManager",
     "format": "xml",
-    "description": "Simplicite Instances Manager (SIM)",
-    "repository": {},
-    "version": "5.x",
+    "description": "Simplicite Instances Manager (SIM)\n\nSonarqube analysis: `sonar-scanner -Dsonar.exclusions=\"**.min.js,**.min.css`",
+    "repository": {
+        "type": "url",
+        "url": "https://www.simplicite.io/resources/modules/sim-app-4.0.xml"
+    },
+    "version": "4.0",
     "dependencies": [{"Simplicite": "4.0"}]
 }

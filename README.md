@@ -1,10 +1,12 @@
 ![](https://www.simplicite.io/resources//logos/logo250.png)
 * * *
 
-`SimpliciteInstanceManager` module definition
-=============================================
+`SimpliciteInstancesManager` module definition
+==============================================
 
 Simplicite Instances Manager (SIM)
+
+Sonarqube analysis: `sonar-scanner -Dsonar.exclusions="**.min.js,**.min.css`
 
 `SIMInstance` business object definition
 ----------------------------------------

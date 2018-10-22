@@ -82,6 +82,12 @@ components:
         simInsCompany:
           description: Company
           type: string
+    ActionResult:
+      type: object
+      properties:
+        result:
+          description: Action result
+          type: string
     SIMServer:
       type: object
       properties:
@@ -113,6 +119,15 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/SIMServer'
+    PublicationResult:
+      type: object
+      properties:
+        mime:
+          description: MIME type
+          type: string
+        content:
+          description: Content (plain text or base64 encoded)
+          type: string
     ArrayOfSIMInstance:
       type: array
       items:
@@ -129,6 +144,405 @@ servers:
 - url: https://dev40.dev.simplicite.io/api
 openapi: 3.0.0
 paths:
+  /login:
+    get:
+      security:
+      - basicAuth: []
+      description: Login
+      operationId: login
+      responses:
+        '200':
+          description: User token
+          content:
+            application/json: {}
+            text/plain: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+          enum:
+          - json
+          - oauth2
+        in: query
+        name: _output
+        description: Optional output format
+        required: false
+      tags:
+      - Application
+  /logout:
+    get:
+      security:
+      - bearerAuth: []
+      description: Logout
+      operationId: logout
+      responses:
+        '200':
+          description: Logout confirmation
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      tags:
+      - Application
+  /rest/SIMInstance/{row_id}/action:sim02Health:
+    get:
+      security:
+      - bearerAuth: []
+      description: Call custom action for one object record or all object records
+      operationId: obj-siminstance-action-sim02health
+      responses:
+        '200':
+          description: Custom action result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      tags:
+      - SIMInstance
+  /rest:
+    get:
+      security:
+      - bearerAuth: []
+      description: Application session information
+      operationId: info
+      responses:
+        '200':
+          description: Application information
+          content:
+            application/json: {}
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+            text/plain: {}
+      parameters:
+      - schema:
+          type: boolean
+        in: query
+        name: texts
+        description: Texts?
+        required: false
+      tags:
+      - Application
+  /rest/SIMInstance/{row_id}/action:sim04IOCredentials:
+    get:
+      security:
+      - bearerAuth: []
+      description: Call custom action for one object record or all object records
+      operationId: obj-siminstance-action-sim04iocredentials
+      responses:
+        '200':
+          description: Custom action result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      tags:
+      - SIMInstance
+  /rest/SIMInstance/{row_id}/action:sim10Start:
+    get:
+      security:
+      - bearerAuth: []
+      description: Call custom action for one object record or all object records
+      operationId: obj-siminstance-action-sim10start
+      responses:
+        '200':
+          description: Custom action result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      tags:
+      - SIMInstance
+  /rest/SIMServer/{row_id}:
+    post:
+      security:
+      - bearerAuth: []
+      description: Create business object record
+      operationId: obj-simserver-create
+      responses:
+        '200':
+          description: Created business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMServer'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: simSrvName
+        description: Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvURL
+        description: URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvSettings
+        description: Additional settings
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvUsername
+        description: Username
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvPassword
+        description: Password
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simSrvClientCertificate
+        description: Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvDescription
+        description: Description
+        required: false
+      tags:
+      - SIMServer
+    get:
+      security:
+      - bearerAuth: []
+      description: Get business object record
+      operationId: obj-simserver-get
+      responses:
+        '200':
+          description: Business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMServer'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_documents
+        description: Inline documents?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_thumbnails
+        description: Inline documents' thumbnails?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _inline_objects
+        description: Inline objects?
+        required: false
+      tags:
+      - SIMServer
+    delete:
+      security:
+      - bearerAuth: []
+      description: Delete business object record
+      operationId: obj-simserver-delete
+      responses:
+        '200':
+          description: Business object deletion confirmation
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      tags:
+      - SIMServer
+    put:
+      security:
+      - bearerAuth: []
+      description: Update business object record
+      operationId: obj-simserver-update
+      responses:
+        '200':
+          description: Updated business object record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMServer'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      - schema:
+          type: string
+        in: query
+        name: simSrvName
+        description: Name
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvURL
+        description: URL
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvSettings
+        description: Additional settings
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvUsername
+        description: Username
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvPassword
+        description: Password
+        required: false
+      - schema:
+          type: object
+        in: query
+        name: simSrvClientCertificate
+        description: Client certificate
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: simSrvDescription
+        description: Description
+        required: false
+      tags:
+      - SIMServer
+  /rest/SIMInstance/{row_id}/action:sim01Refresh:
+    get:
+      security:
+      - bearerAuth: []
+      description: Call custom action for one object record or all object records
+      operationId: obj-siminstance-action-sim01refresh
+      responses:
+        '200':
+          description: Custom action result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      tags:
+      - SIMInstance
+  /rest/SIMInstance/{row_id}/action:sim03Logs:
+    get:
+      security:
+      - bearerAuth: []
+      description: Call custom action for one object record or all object records
+      operationId: obj-siminstance-action-sim03logs
+      responses:
+        '200':
+          description: Custom action result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      tags:
+      - SIMInstance
   /rest/SIMInstance:
     get:
       security:
@@ -152,6 +566,30 @@ paths:
         in: query
         name: _metadata
         description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: _indexsearch
+        description: Index search query
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: _crosstab
+        description: Apply pivot table
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _crosstabcubes
+        description: pivot table data as cubes?
         required: false
       - schema:
           type: boolean
@@ -303,18 +741,19 @@ paths:
         required: false
       tags:
       - SIMInstance
-  /login:
+  /rest/SIMServer/{row_id}/action:simRefreshAll:
     get:
       security:
-      - basicAuth: []
-      description: Login
-      operationId: login
+      - bearerAuth: []
+      description: Call custom action for one object record or all object records
+      operationId: obj-simserver-action-simrefreshall
       responses:
         '200':
-          description: User token
+          description: Custom action result
           content:
-            application/json: {}
-            text/plain: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
         '401':
           description: Authentication error
           content:
@@ -322,57 +761,12 @@ paths:
       parameters:
       - schema:
           type: string
-          enum:
-          - json
-          - oauth2
-        in: query
-        name: _output
-        description: Optional output format
-        required: false
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
       tags:
-      - Application
-  /logout:
-    get:
-      security:
-      - bearerAuth: []
-      description: Logout
-      operationId: logout
-      responses:
-        '200':
-          description: Logout confirmation
-          content:
-            application/json: {}
-        '401':
-          description: Authentication error
-          content:
-            application/json: {}
-      tags:
-      - Application
-  /rest:
-    get:
-      security:
-      - bearerAuth: []
-      description: Application session information
-      operationId: info
-      responses:
-        '200':
-          description: Application information
-          content:
-            application/json: {}
-        '401':
-          description: Authentication error
-          content:
-            application/json: {}
-            text/plain: {}
-      parameters:
-      - schema:
-          type: boolean
-        in: query
-        name: texts
-        description: Texts?
-        required: false
-      tags:
-      - Application
+      - SIMServer
   /rest/SIMInstance/{row_id}:
     post:
       security:
@@ -395,7 +789,7 @@ paths:
           type: string
         in: path
         name: row_id
-        description: row ID
+        description: row ID (or _ for all row IDs)
         required: true
       - schema:
           type: string
@@ -553,12 +947,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SIMInstance'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
       parameters:
       - schema:
           type: string
         in: path
         name: row_id
-        description: row ID
+        description: row ID (or _ for all row IDs)
         required: true
       - schema:
           type: boolean
@@ -597,7 +995,7 @@ paths:
           type: string
         in: path
         name: row_id
-        description: row ID
+        description: row ID (or _ for all row IDs)
         required: true
       tags:
       - SIMInstance
@@ -622,7 +1020,7 @@ paths:
           type: string
         in: path
         name: row_id
-        description: row ID
+        description: row ID (or _ for all row IDs)
         required: true
       - schema:
           type: string
@@ -768,121 +1166,19 @@ paths:
         required: false
       tags:
       - SIMInstance
-  /rest/SIMServer/{row_id}:
-    post:
-      security:
-      - bearerAuth: []
-      description: Create business object record
-      operationId: obj-simserver-create
-      responses:
-        '200':
-          description: Created business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SIMServer'
-        '401':
-          description: Authentication error
-          content:
-            application/json: {}
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: row ID
-        required: true
-      - schema:
-          type: string
-        in: query
-        name: simSrvName
-        description: Name
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvURL
-        description: URL
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvSettings
-        description: Additional settings
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvUsername
-        description: Username
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvPassword
-        description: Password
-        required: false
-      - schema:
-          type: object
-        in: query
-        name: simSrvClientCertificate
-        description: Client certificate
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvDescription
-        description: Description
-        required: false
-      tags:
-      - SIMServer
+  /rest/SIMInstance/{row_id}/action:sim11Stop:
     get:
       security:
       - bearerAuth: []
-      description: Get business object record
-      operationId: obj-simserver-get
+      description: Call custom action for one object record or all object records
+      operationId: obj-siminstance-action-sim11stop
       responses:
         '200':
-          description: Business object record
+          description: Custom action result
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SIMServer'
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: row ID
-        required: true
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_documents
-        description: Inline documents?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_thumbnails
-        description: Inline documents' thumbnails?
-        required: false
-      - schema:
-          type: boolean
-        in: query
-        name: _inline_objects
-        description: Inline objects?
-        required: false
-      tags:
-      - SIMServer
-    delete:
-      security:
-      - bearerAuth: []
-      description: Delete business object record
-      operationId: obj-simserver-delete
-      responses:
-        '200':
-          description: Business object deletion confirmation
+                $ref: '#/components/schemas/ActionResult'
         '401':
           description: Authentication error
           content:
@@ -892,77 +1188,10 @@ paths:
           type: string
         in: path
         name: row_id
-        description: row ID
+        description: row ID (or _ for all row IDs)
         required: true
       tags:
-      - SIMServer
-    put:
-      security:
-      - bearerAuth: []
-      description: Update business object record
-      operationId: obj-simserver-update
-      responses:
-        '200':
-          description: Updated business object record
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SIMServer'
-        '401':
-          description: Authentication error
-          content:
-            application/json: {}
-      parameters:
-      - schema:
-          type: string
-        in: path
-        name: row_id
-        description: row ID
-        required: true
-      - schema:
-          type: string
-        in: query
-        name: simSrvName
-        description: Name
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvURL
-        description: URL
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvSettings
-        description: Additional settings
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvUsername
-        description: Username
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvPassword
-        description: Password
-        required: false
-      - schema:
-          type: object
-        in: query
-        name: simSrvClientCertificate
-        description: Client certificate
-        required: false
-      - schema:
-          type: string
-        in: query
-        name: simSrvDescription
-        description: Description
-        required: false
-      tags:
-      - SIMServer
+      - SIMInstance
   /rest/SIMServer:
     get:
       security:
@@ -986,6 +1215,30 @@ paths:
         in: query
         name: _metadata
         description: Metadata?
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _count
+        description: Count?
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: _indexsearch
+        description: Index search query
+        required: false
+      - schema:
+          type: string
+        in: query
+        name: _crosstab
+        description: Apply pivot table
+        required: false
+      - schema:
+          type: boolean
+        in: query
+        name: _crosstabcubes
+        description: pivot table data as cubes?
         required: false
       - schema:
           type: boolean
@@ -1037,6 +1290,32 @@ paths:
         required: false
       tags:
       - SIMServer
+  /rest/SIMInstance/{row_id}/action:sim20Upgrade:
+    get:
+      security:
+      - bearerAuth: []
+      description: Call custom action for one object record or all object records
+      operationId: obj-siminstance-action-sim20upgrade
+      responses:
+        '200':
+          description: Custom action result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '401':
+          description: Authentication error
+          content:
+            application/json: {}
+      parameters:
+      - schema:
+          type: string
+        in: path
+        name: row_id
+        description: row ID (or _ for all row IDs)
+        required: true
+      tags:
+      - SIMInstance
 info:
   license:
     name: Simplicite license
@@ -1045,6 +1324,6 @@ info:
     name: Simplicite Software
     url: http://www.simplicitesoftware.com
     email: contact@simplicitesoftware.com
-  description: REST APIs for SimpliciteInstanceManager
-  title: SimpliciteInstanceManager
-  version: 5.x
+  description: REST APIs for SimpliciteInstancesManager
+  title: SimpliciteInstancesManager
+  version: '4.0'

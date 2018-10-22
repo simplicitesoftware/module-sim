@@ -1,2 +1,8 @@
-/bin/
-/build/
+/bin
+/build
+/target
+/effective.pom
+/.idea
+/.scannerwork/*.iml
+/**/Thumbs.db
+/**/.DS_Store
