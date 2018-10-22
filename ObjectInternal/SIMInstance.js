@@ -93,7 +93,6 @@ SIMInstance.simGet = function() {
 	var res = SIMInstance.callAPI.call(this, "get");
 	var status = res.optInt("status", 999);
 	var msg = res.optString("message", "");
-	var error = null;
 	if (status == 0) {
 		var item = res.optJSONObject("item");
 		if (item) {
@@ -111,7 +110,7 @@ SIMInstance.simGet = function() {
 			this.setFieldValue("simInsPhone", item.optString("phone", ""));
 			this.setFieldValue("simInsCompany", item.optString("company", ""));
 		} else {
-			message = "No item in get response\n\n" + msg;
+			msg = "No item in get response\n\n" + msg;
 		}
 	}
 	return { status: status, message: msg };
@@ -124,8 +123,9 @@ SIMInstance.simRefresh = function() {
 		if (r.status == 0) {
 			new BusinessObjectTool(this).validateAndSave();
 			return SIMInstance._info.call(this, "SIM_REFRESHED");
-		} else
+		} else {
 			return SIMInstance._error.call(this, r.status, r.message);
+		}
 	} catch (e) {
 		return SIMInstance._error.call(this, 999, e.javaException ? e.javaException.getMessage() : e);
 	}
